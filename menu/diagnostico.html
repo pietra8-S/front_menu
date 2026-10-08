@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Diagnóstico</title>
+<style>
+  body{font-family:monospace;padding:24px;background:#111;color:#eee;line-height:1.6}
+  .ok{color:#7ee787}.err{color:#ff7b72}.warn{color:#ffa657}
+  h1{color:#c9a0ff}
+  code{background:#222;padding:2px 6px;border-radius:4px}
+</style>
+</head>
+<body>
+<h1>🔍 Diagnóstico de arquivos</h1>
+<div id="out">Carregando testes…</div>
+
+<script>
+const out = document.getElementById('out');
+const html = [];
+
+function testar(nome, url, tipo) {
+  return new Promise(resolve => {
+    const el = document.createElement(tipo === 'css' ? 'link' : 'script');
+    el.onload = () => { html.push(`<div class="ok">✅ ${nome} — CARREGOU (${url})</div>`); resolve(); };
+    el.onerror = () => { html.push(`<div class="err">❌ ${nome} — NÃO ENCONTRADO (${url})</div>`); resolve(); };
+    if (tipo === 'css') { el.rel = 'stylesheet'; el.href = url; }
+    else { el.src = url; }
+    document.head.appendChild(el);
+  });
+}
+
+function testarImagem(nome, url) {
+  return new Promise(resolve => {
+    const img = new Image();
+    img.onload = () => { html.push(`<div class="ok">✅ ${nome} — CARREGOU (${url})</div>`); resolve(); };
+    img.onerror = () => { html.push(`<div class="err">❌ ${nome} — NÃO ENCONTRADO (${url})</div>`); resolve(); };
+    img.src = url;
+  });
+}
+
+(async () => {
+  await testar('css/styles.css', './css/styles.css', 'css');
+  await testar('css/mobile.css', './css/mobile.css', 'css');
+  await testar('js/script.js', './js/script.js', 'js');
+  await testarImagem('imagens/logo.png', './imagens/logo.png');
+  await testarImagem('imagens/hero-lavanda.jpg', './imagens/hero-lavanda.jpg');
+  await testarImagem('imagens/produto-vela.jpg', './imagens/produto-vela.jpg');
+
+  html.push('<hr><div class="warn">📁 Pasta atual do HTML: <code>' + location.pathname + '</code></div>');
+  out.innerHTML = html.join('');
+})();
+</script>
+</body>
+</html>

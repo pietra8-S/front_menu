@@ -1,0 +1,70 @@
+/* =========================================================
+   Lavvida — responsivo
+   ========================================================= */
+
+@media (max-width: 980px) {
+  header { padding: 1rem 1.6rem; }
+  header.scrolled { padding: 0.7rem 1.6rem; }
+  .logo-link img { height: 60px; }
+  header.scrolled .logo-link img { height: 50px; }
+  .brand-name { font-size: 1.6rem; }
+  header.scrolled .brand-name { font-size: 1.4rem; }
+
+  .nav-links-desktop { display: none; }
+  .hamburger { display: grid; }
+  .menu-suspenso { right: 1.6rem; }
+
+  .produtos-grid { grid-template-columns: repeat(2, 1fr); }
+  .hero { min-height: 90vh; }
+  .hero-placa {
+    margin: 0 6vw; padding: 40px 36px; max-width: 500px;
+    border-radius: 38% 62% 42% 58% / 55% 42% 58% 45%;
+  }
+  .hero-lavanda-mask { width: 55%; opacity: 0.6; }
+  .sobre-inner { grid-template-columns: 1fr; gap: 36px; }
+  .insta-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-inner { grid-template-columns: 1fr 1fr; gap: 36px; }
+}
+
+@media (max-width: 720px) {
+  header { padding: 0.85rem 1.1rem; }
+  header.scrolled { padding: 0.6rem 1.1rem; }
+  .logo-link img { height: 52px; }
+  header.scrolled .logo-link img { height: 44px; }
+  .brand-name { font-size: 1.4rem; }
+  header.scrolled .brand-name { font-size: 1.25rem; }
+  .nav-actions .nav-icon:not(.cart-icon):not(.theme-toggle) { display: none; }
+  .menu-suspenso { right: 1rem; min-width: 200px; }
+
+  .hero { min-height: 88vh; }
+  .hero-placa {
+    margin: 0 5vw; padding: 34px 26px; max-width: 100%;
+    border-radius: 34% 66% 40% 60% / 58% 42% 58% 42%;
+  }
+  .hero-placa h1 { font-size: 2.4rem; }
+  .hero-placa p { font-size: 1rem; }
+  .hero-lavanda-mask { width: 65%; opacity: 0.45; }
+
+  .produtos-grid { grid-template-columns: 1fr; }
+  .produtos { padding: 56px 20px 72px; }
+
+  .imprensa { padding: 28px 20px; }
+  .imprensa-logos { gap: 22px; }
+  .imprensa-logos span { font-size: 1.05rem; }
+
+  .sobre { padding: 60px 20px; }
+  .sobre-media { clip-path: polygon(4% 2%, 96% 4%, 100% 90%, 88% 100%, 6% 96%, 0% 10%); }
+
+  .insta { padding: 60px 20px 30px; }
+  .insta-grid { gap: 10px; }
+
+  .faixa-lavanda { height: 60px; }
+  footer { padding: 52px 20px 24px; }
+  .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; }
+
+  .produtos-grid:hover .card { filter: none; opacity: 1; }
+
+  .newsletter-form { flex-direction: column; max-width: 100%; }
+  .newsletter-btn { width: 100%; }
+}
